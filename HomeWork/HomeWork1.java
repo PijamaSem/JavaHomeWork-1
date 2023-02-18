@@ -1,6 +1,7 @@
 package Java.Seminar1.HomeWork;
-
 import java.util.Scanner;
+import java.io.FileWriter; 
+import java.io.IOException;
 
 public class HomeWork1 {
     public static void main(String[] args) {
@@ -8,9 +9,15 @@ public class HomeWork1 {
         // System.out.println(num);
         int result = TringleDigitCalculation(num);
         // System.out.println(result);
-        // WTF(result);
-        
-        
+        String answered = Integer.toString(result);
+        try (FileWriter fw = new FileWriter("file.txt", false)){
+            fw.write(answered);
+            fw.append('\n');
+            fw.flush();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+
     }
     public static int UserInput() {
         Scanner iScanner = new Scanner(System.in);
